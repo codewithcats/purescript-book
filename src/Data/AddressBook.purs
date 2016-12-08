@@ -26,3 +26,15 @@ showEntry :: Entry -> String
 showEntry entry = entry.firstName <> " " <>
     entry.lastName <> ", " <>
     showAddress entry.address
+
+emptyBook :: AddressBook
+emptyBook = empty
+
+insertEntry :: Entry -> AddressBook -> AddressBook
+insertEntry = Cons
+
+findEntry :: String -> String -> AddressBook -> Maybe Entry
+findEntry firstName lastName book = head $ filter filterEntry book
+    where
+        filterEntry :: Entry -> Boolean
+        filterEntry entry = entry.firstName == firstName && entry.lastName == lastName
